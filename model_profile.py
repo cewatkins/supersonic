@@ -3,8 +3,7 @@ import os
 import yaml
 import torch
 import pandas as pd
-from sonics.models.model import AudioClassifier, AudioClassifierV0, get_model_version
-from sonics.utils.config import dict2cfg
+from sonics.models.model import AudioClassifier
 from sonics.utils.perf import profile_model
 from sonics.utils.seed import set_seed
 
