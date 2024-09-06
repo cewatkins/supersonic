@@ -16,7 +16,7 @@ def profile_model(model, input_tensor, display=False):
             "Activations (M)",
             "Params (M)",
             "Memory (GB)",
-            "Throughput (imgs/sec)",
+            "Speed (A/S)",
         ],
         "Value": [flops, acts, params, memory, speed],
     }
