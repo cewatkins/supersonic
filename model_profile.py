@@ -12,7 +12,7 @@ def arg_parser():
     parser = argparse.ArgumentParser(description="Profile a model")
     parser.add_argument("--config", type=str, required=True, help="Path to config file")
     parser.add_argument(
-        "--batch_size", type=int, default=32, help="Batch size for profiling"
+        "--batch_size", type=int, default=12, help="Batch size for profiling"
     )
     return parser.parse_args()
 
