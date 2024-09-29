@@ -2,8 +2,7 @@
 
 This repository contains the official source code for our paper:
 
-SONICS: SYNTHETIC OR NOT - IDENTIFYING COUN-
-TERFEIT SONGS
+SONICS: SYNTHETIC OR NOT - IDENTIFYING COUNTERFEIT SONGS
 
 
 ## System Configuration
@@ -23,7 +22,7 @@ pip install -r requirements.txt
 
 [As a part of our submission, we are not providing our dataset. It will be published after the final decision about acceptance.]
 
-After downloading the dataset, the folder structure should look like following,
+After downloading the dataset, the folder structure should look like following:
 
 ```
 parentFolder
@@ -39,7 +38,7 @@ parentFolder
 │       └──fake_songs.csv
 ```
 
-After downloading the dataset, to split it into train, val, and test set we will need to run the following part from the parent folder
+After downloading the dataset, to split it into train, val, and test set, we will need to run the following part from the parent folder
 
 ```
 python data_split.py
@@ -47,7 +46,7 @@ python data_split.py
 
 ## Training
 
-Choose any of the config from `config` folder and run the follwoing
+Choose any of the config from `config` folder and run the following
 
 ```
 python train.py --config ./configs/convnext-5s.yaml
