@@ -30,8 +30,8 @@ parentFolder
 ├──sonics
 │
 ├──dataset
-│       ├──real  
-│       │   └── xxx.mp3 
+│       ├──real_songs  
+│       │   └──xxx.mp3 
 │       ├──fake_songs
 │       │   └──yyy.mp3
 │       ├──real_songs.csv
@@ -40,7 +40,7 @@ parentFolder
 
 After downloading the dataset, to split it into train, val, and test set, we will need to run the following part from the parent folder
 
-```
+```python
 python data_split.py
 ```
 
@@ -48,7 +48,7 @@ python data_split.py
 
 Choose any of the config from `config` folder and run the following
 
-```
+```python
 python train.py --config ./configs/convnext-5s.yaml
 ```
 
