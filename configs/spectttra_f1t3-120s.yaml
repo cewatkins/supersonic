@@ -1,4 +1,4 @@
-experiment_name: "spectttra_s-t=120"
+experiment_name: "spectttra_alpha-t=120"
 
 logger:
   project: "sonics"
@@ -74,7 +74,7 @@ optimizer:
 
 scheduler:
   sched: "cosine"
-  lr: 0.0008 # overrides lr-base if set
+  lr: 0.0005 # overrides lr-base if set
   lr_base: 0.001 # base learning rate: lr = lr_base * global_batch_size / base_size
   lr_base_size: 256 # base learning rate batch size
   lr_base_scale: "linear" # learning rate vs batch_size scaling ("linear", "sqrt")

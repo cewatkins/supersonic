@@ -1,4 +1,4 @@
-experiment_name: "spectttra_s_f1t3-t=5"
+experiment_name: "spectttra_alpha-t=5"
 
 logger:
   project: "sonics"

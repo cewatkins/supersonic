@@ -1,11 +1,7 @@
-experiment_name: "v14:spectttra_s-t=120"
-group_name: "baseline-v14-tiny"
-group_desc: "f1 as primary metric, specificity and sensitivy, 100% of data, timm scheduler, optimizer (adamW), args from GCViT, use best ckpt for test, grad clip, remove music only (w/ FP) label-smoothing=0.02, dup_lucidrain=default, f_max=8000=sr/2, single gpu"
+experiment_name: "spectttra_gamma-t=120"
 
 logger:
-  wandb: true
   project: "sonics"
-  team: "rtx4090-v3"
   primary_metric: "f1"
 
 environment:
@@ -60,11 +56,11 @@ loss:
 num_classes: 1  # Adjust based on your classification task
 
 training:
-  batch_size: 160
+  batch_size: 128
   epochs: 50
 
 validation:
-  batch_size: 160
+  batch_size: 128
     
 optimizer:
   opt: "adamw"
@@ -78,7 +74,7 @@ optimizer:
 
 scheduler:
   sched: "cosine"
-  lr: 0.0008 # overrides lr-base if set
+  lr: 0.0005 # overrides lr-base if set
   lr_base: 0.001 # base learning rate: lr = lr_base * global_batch_size / base_size
   lr_base_size: 256 # base learning rate batch size
   lr_base_scale: "linear" # learning rate vs batch_size scaling ("linear", "sqrt")
