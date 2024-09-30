@@ -1,8 +1,6 @@
 # SONICS: Synthetic Or Not - Identifying Counterfeit Songs
 
-This repository contains the official source code for our paper:
-
-SONICS: SYNTHETIC OR NOT - IDENTIFYING COUNTERFEIT SONGS
+This repository contains the official source code for our paper **SONICS: Synthetic Or Not - Identifying Counterfeit Songs**.
 
 
 ## System Configuration
@@ -40,17 +38,17 @@ parentFolder
 
 After downloading the dataset, to split it into train, val, and test set, we will need to run the following part from the parent folder
 
-```python
+```shell
 python data_split.py
 ```
 
-> **Note:** The `real_songs.csv` and `fake_songs.csv` contains the metadata for the songs including filepath, duration, split, etc.
+> **Note:** The `real_songs.csv` and `fake_songs.csv` contain the metadata for the songs including filepath, duration, split, etc and config file contains path of the metadata.
 
 ## Training
 
 Choose any of the config from `config` folder and run the following
 
-```python
+```shell
 python train.py --config <path to the config file>
 ```
 
@@ -58,14 +56,14 @@ python train.py --config <path to the config file>
 
 Choose any of the config from `config` folder and run the following
 
-```python
+```shell
 python test.py --config <path to the config file> --ckpt_path <path to the checkpoint file>
 ```
 
 ## Model Profiling
 
 Choose any of the config from `config` folder and run the following
-```python
+```shell
 python model_profile.py --config <path to the config file> --batch_size 12
 ```
 
