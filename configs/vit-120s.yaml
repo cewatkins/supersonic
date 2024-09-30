@@ -1,4 +1,4 @@
-experiment_name: "v14:vit_s-t=120"
+experiment_name: "vit-t=120"
 
 logger:
   project: "sonics"

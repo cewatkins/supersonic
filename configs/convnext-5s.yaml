@@ -1,4 +1,4 @@
-experiment_name: "convnext_t-t=5"
+experiment_name: "convnext-t=5"
 
 logger:
   project: "sonics"
