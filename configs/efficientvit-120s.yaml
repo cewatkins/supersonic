@@ -32,7 +32,7 @@ melspec:
   norm: "mean_std"  # Options: "min_max", "mean_std", "simple", or null for no normalization
 
 model:
-  name: "timm-convnext_tiny"  # Options: "SpecTTTra" or "ViT"
+  name: "timm-efficientvit_b2"  # Options: "SpecTTTra" or "ViT"
   pretrained: false
   input_shape: [128, 3744] # [n_mels, n_frames]
   resume: null
@@ -44,11 +44,11 @@ loss:
 num_classes: 1  # Adjust based on your classification task
 
 training:
-  batch_size: 40
+  batch_size: 32
   epochs: 50
 
 validation:
-  batch_size: 40
+  batch_size: 32
     
 optimizer:
   opt: "adamw"
@@ -62,7 +62,7 @@ optimizer:
 
 scheduler:
   sched: "cosine"
-  lr: 0.0005 # overrides lr-base if set
+  lr: 0.0004 # overrides lr-base if set
   lr_base: 0.001 # base learning rate: lr = lr_base * global_batch_size / base_size
   lr_base_size: 256 # base learning rate batch size
   lr_base_scale: "linear" # learning rate vs batch_size scaling ("linear", "sqrt")

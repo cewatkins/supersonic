@@ -33,7 +33,7 @@ melspec:
   norm: "mean_std"  # Options: "min_max", "mean_std", "simple", or null for no normalization
 
 model:
-  name: "EfficientVit"  # Options: "SpecTTTra" or "ViT"
+  name: "timm-efficientvit_b2"  # Options: "SpecTTTra" or "ViT"
   pretrained: false
   input_shape: [128, 128] # [n_mels, n_frames]
   resume: null
@@ -63,7 +63,7 @@ optimizer:
 
 scheduler:
   sched: "cosine"
-  lr: 0.0008 # overrides lr-base if set
+  lr: 0.0002 # overrides lr-base if set
   lr_base: 0.001 # base learning rate: lr = lr_base * global_batch_size / base_size
   lr_base_size: 256 # base learning rate batch size
   lr_base_scale: "linear" # learning rate vs batch_size scaling ("linear", "sqrt")
