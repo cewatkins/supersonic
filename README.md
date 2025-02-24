@@ -101,3 +101,7 @@ python model_profile.py --config <path to the config file> --batch_size 12
 We have utilized the code and models provided in the following repository:
 
 - [Pytorch Image Models](https://github.com/huggingface/pytorch-image-models)
+
+## License
+
+This project is licensed under the MIT License for code and checkpoints/models, and the CC BY-NC 4.0 License for the dataset. See the [LICENSE](./LICENSE) file for more details.
