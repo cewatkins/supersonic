@@ -87,14 +87,14 @@ python model_profile.py --config <path to the config file> --batch_size 12
 
 ## 📊 Model Performance Comparison
 
-| Model Name                        | HF Link | Variant       | Duration | f_clip | t_clip | F1   | Sensitivity | Specificity | Speed (A/S) | FLOPs (G) | Mem. (GB) | # Act. (M) | # Param. (M) |
-|------------------------------------|---------|--------------|----------|--------|--------|------|-------------|-------------|-------------|-----------|-----------|------------|-------------|
-| sonics-spectttra-gamma-5s         | [HF](https://huggingface.co/awsaf49/sonics-spectttra-gamma-5s) | SpecTTTra-γ | 5s       | 5      | 7      | 0.76 | 0.63        | 0.98        | 154         | 0.7       | 0.1       | 2          | 17          |
-| sonics-spectttra-beta-5s          | [HF](https://huggingface.co/awsaf49/sonics-spectttra-beta-5s) | SpecTTTra-β  | 5s       | 3      | 5      | 0.78 | 0.69        | 0.94        | 152         | 1.1       | 0.2       | 2          | 17          |
-| sonics-spectttra-gamma-5s         | [HF](https://huggingface.co/awsaf49/sonics-spectttra-gamma-5s) | SpecTTTra-α   | 5s       | 1      | 3      | 0.80 | 0.71        | 0.92        | 148         | 2.9       | 0.5       | 6          | 17          |
-| sonics-spectttra-gamma-120s       | [HF](https://huggingface.co/awsaf49/sonics-spectttra-gamma-120s) | SpecTTTra-γ  | 120s     | 5      | 7      | 0.88 | 0.79        | 0.99        | 97          | 10.1      | 1.6       | 20         | 24          |
-| sonics-spectttra-beta-120s        | [HF](https://huggingface.co/awsaf49/sonics-spectttra-beta-120s) | SpecTTTra-β  | 120s     | 3      | 5      | 0.92 | 0.86        | 0.99        | 80          | 14.0      | 2.3       | 29         | 21          |
-| sonics-spectttra-alpha-120s       | [HF](https://huggingface.co/awsaf49/sonics-spectttra-alpha-120s) | SpecTTTra-α  | 120s     | 1      | 3      | 0.97 | 0.96        | 0.99        | 47          | 23.7      | 3.9       | 50        | 19          |
+| Model Name                     | HF Link | Variant        | Duration | f_clip | t_clip | F1  | Sensitivity | Specificity | Speed (A/S) | FLOPs (G) | Mem. (GB) | # Act. (M) | # Param. (M) |
+|--------------------------------|---------|---------------|----------|--------|--------|-----|-------------|-------------|-------------|-----------|-----------|------------|-------------|
+| `sonics-spectttra-alpha-5s`   | <a class="hf-button" href="https://huggingface.co/awsaf49/sonics-spectttra-alpha-5s"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg">HF</a>  | SpecTTTra-α   | 5s       | 1      | 3      | 0.78 | 0.69        | 0.94        | 148         | 2.9       | 0.5       | 6          | 17          |
+| `sonics-spectttra-beta-5s`    | <a class="hf-button" href="https://huggingface.co/awsaf49/sonics-spectttra-beta-5s"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg">HF</a>  | SpecTTTra-β   | 5s       | 3      | 5      | 0.78 | 0.69        | 0.94        | 152         | 1.1       | 0.2       | 5          | 17          |
+| `sonics-spectttra-gamma-5s`   | <a class="hf-button" href="https://huggingface.co/awsaf49/sonics-spectttra-gamma-5s"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg">HF</a>  | SpecTTTra-γ   | 5s       | 5      | 7      | 0.76 | 0.66        | 0.92        | 154         | 0.7       | 0.1       | 2          | 17          |
+| `sonics-spectttra-alpha-120s` | <a class="hf-button" href="https://huggingface.co/awsaf49/sonics-spectttra-alpha-120s"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg">HF</a>  | SpecTTTra-α   | 120s     | 1      | 3      | 0.97 | 0.96        | 0.99        | 47          | 23.7      | 3.9       | 50         | 19          |
+| `sonics-spectttra-beta-120s`  | <a class="hf-button" href="https://huggingface.co/awsaf49/sonics-spectttra-beta-120s"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg">HF</a>  | SpecTTTra-β   | 120s     | 3      | 5      | 0.92 | 0.86        | 0.99        | 80          | 14.0      | 2.3       | 29         | 17          |
+| `sonics-spectttra-gamma-120s` | <a class="hf-button" href="https://huggingface.co/awsaf49/sonics-spectttra-gamma-120s"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg">HF</a>  | SpecTTTra-γ   | 120s     | 5      | 7      | 0.97 | 0.96        | 0.99        | 97          | 10.1      | 1.6       | 138        | 22          |
 
 ## Acknowledgement
 
