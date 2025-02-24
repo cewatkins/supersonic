@@ -1,6 +1,6 @@
 # SONICS: Synthetic Or Not - Identifying Counterfeit Songs
 
-[![Paper](https://img.shields.io/badge/ICLR-2025-blue)](https://openreview.net/forum?id=PY7KSh29Z8)  [![Paper](https://img.shields.io/badge/ArXiv-Paper-red)](https://arxiv.org/abs/2408.14080)  [![Hugging Face](https://img.shields.io/badge/HuggingFace-Model-yellow)](https://huggingface.co/awsaf49/sonics)  [![Hugging Face Dataset](https://img.shields.io/badge/HuggingFace-Dataset-orange)](https://huggingface.co/datasets/awsaf49/sonics)  [![Hugging Face Demo](https://img.shields.io/badge/HuggingFace-Demo-blue)](https://huggingface.co/spaces/sonics-dl-group/sonics-song-leaderboard)  [![License](https://img.shields.io/badge/License-CC%20BY--NC%204.0-blue)](https://creativecommons.org/licenses/by-nc/4.0/)
+[![Paper](https://img.shields.io/badge/ICLR-2025-blue)](https://openreview.net/forum?id=PY7KSh29Z8)  [![Paper](https://img.shields.io/badge/ArXiv-Paper-red)](https://arxiv.org/abs/2408.14080)  [![Hugging Face](https://img.shields.io/badge/HuggingFace-Model-yellow)](https://huggingface.co/collections/awsaf49/sonics-spectttra-67bb6517b3920fd18e409013)  [![Hugging Face Dataset](https://img.shields.io/badge/HuggingFace-Dataset-orange)](https://huggingface.co/datasets/awsaf49/sonics)  [![Hugging Face Demo](https://img.shields.io/badge/HuggingFace-Demo-blue)](https://huggingface.co/spaces/awsaf49/sonics-fake-song-detection)  [![License](https://img.shields.io/badge/License-CC%20BY--NC%204.0-blue)](https://creativecommons.org/licenses/by-nc/4.0/)
 
 This repository contains the official source code for our paper **SONICS: Synthetic Or Not - Identifying Counterfeit Songs**.
 
@@ -84,6 +84,17 @@ Choose any of the config from `config` folder and run the following
 ```shell
 python model_profile.py --config <path to the config file> --batch_size 12
 ```
+
+## 📊 Model Performance Comparison
+
+| Model Name                        | HF Link | Variant       | Duration | f_clip | t_clip | F1   | Sensitivity | Specificity | Speed (A/S) | FLOPs (G) | Mem. (GB) | # Act. (M) | # Param. (M) |
+|------------------------------------|---------|--------------|----------|--------|--------|------|-------------|-------------|-------------|-----------|-----------|------------|-------------|
+| sonics-spectttra-gamma-5s         | [HF](https://huggingface.co/awsaf49/sonics-spectttra-gamma-5s) | SpecTTTra-γ | 5s       | 5      | 7      | 0.76 | 0.63        | 0.98        | 154         | 0.7       | 0.1       | 2          | 17          |
+| sonics-spectttra-beta-5s          | [HF](https://huggingface.co/awsaf49/sonics-spectttra-beta-5s) | SpecTTTra-β  | 5s       | 3      | 5      | 0.78 | 0.69        | 0.94        | 152         | 1.1       | 0.2       | 2          | 17          |
+| sonics-spectttra-gamma-5s         | [HF](https://huggingface.co/awsaf49/sonics-spectttra-gamma-5s) | SpecTTTra-α   | 5s       | 1      | 3      | 0.80 | 0.71        | 0.92        | 148         | 2.9       | 0.5       | 6          | 17          |
+| sonics-spectttra-gamma-120s       | [HF](https://huggingface.co/awsaf49/sonics-spectttra-gamma-120s) | SpecTTTra-γ  | 120s     | 5      | 7      | 0.88 | 0.79        | 0.99        | 97          | 10.1      | 1.6       | 20         | 24          |
+| sonics-spectttra-beta-120s        | [HF](https://huggingface.co/awsaf49/sonics-spectttra-beta-120s) | SpecTTTra-β  | 120s     | 3      | 5      | 0.92 | 0.86        | 0.99        | 80          | 14.0      | 2.3       | 29         | 21          |
+| sonics-spectttra-alpha-120s       | [HF](https://huggingface.co/awsaf49/sonics-spectttra-alpha-120s) | SpecTTTra-α  | 120s     | 1      | 3      | 0.97 | 0.96        | 0.99        | 47          | 23.7      | 3.9       | 50        | 19          |
 
 ## Acknowledgement
 
