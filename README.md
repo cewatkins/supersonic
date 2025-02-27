@@ -1,6 +1,6 @@
 # SONICS: Synthetic Or Not - Identifying Counterfeit Songs
 
-[![Paper](https://img.shields.io/badge/ICLR-2025-blue)](https://openreview.net/forum?id=PY7KSh29Z8)  [![Paper](https://img.shields.io/badge/ArXiv-Paper-red)](https://arxiv.org/abs/2408.14080)  [![Hugging Face](https://img.shields.io/badge/HuggingFace-Model-yellow)](https://huggingface.co/collections/awsaf49/sonics-spectttra-67bb6517b3920fd18e409013)  [![Hugging Face Dataset](https://img.shields.io/badge/HuggingFace-Dataset-orange)](https://huggingface.co/datasets/awsaf49/sonics)  [![Hugging Face Demo](https://img.shields.io/badge/HuggingFace-Demo-blue)](https://huggingface.co/spaces/awsaf49/sonics-fake-song-detection)  [![License](https://img.shields.io/badge/License-MIT%20License-blue)](https://opensource.org/licenses/MIT)
+[![Paper](https://img.shields.io/badge/ICLR-2025-blue)](https://openreview.net/forum?id=PY7KSh29Z8)  [![Paper](https://img.shields.io/badge/ArXiv-Paper-red)](https://arxiv.org/abs/2408.14080)  [![Hugging Face](https://img.shields.io/badge/HuggingFace-Model-yellow)](https://huggingface.co/collections/awsaf49/sonics-spectttra-67bb6517b3920fd18e409013)  [![Hugging Face Dataset](https://img.shields.io/badge/HuggingFace-Dataset-orange)](https://huggingface.co/datasets/awsaf49/sonics)  [![Kaggle Dataset](https://img.shields.io/badge/Kaggle-Dataset-blue?logo=kaggle)](https://www.kaggle.com/datasets/awsaf49/sonics-dataset)  [![Hugging Face Demo](https://img.shields.io/badge/HuggingFace-Demo-blue)](https://huggingface.co/spaces/awsaf49/sonics-fake-song-detection)  [![License](https://img.shields.io/badge/License-MIT%20License-blue)](https://opensource.org/licenses/MIT)
 
 This repository contains the official source code for our paper **SONICS: Synthetic Or Not - Identifying Counterfeit Songs**.
 
@@ -36,6 +36,20 @@ pip install -r requirements.txt
 
 ## Dataset 
 
+You can download the dataset either from Huggingface or Kaggle. To download it from Huggingface, run the following code snippet,
+
+```
+from huggingface_hub import snapshot_download
+
+snapshot_download(repo_id="awsaf49/sonics", repo_type="dataset", local_dir="you_local_folder")
+```
+
+To download it from Kaggle, you can either do it manually or do it via Kaggle API. For using Kaggle API, first you need to set it up following [this documentation](https://www.kaggle.com/docs/api?utm_me...=). Afterwards, run the following command
+
+```
+kaggle datasets download -d awsaf49/sonics-dataset --unzip
+```
+
 After downloading the dataset, the folder structure should look like following:
 
 ```
@@ -51,6 +65,57 @@ parentFolder
 │       ├──real_songs.csv
 │       └──fake_songs.csv
 ```
+
+## Metadata Properties
+The first metadata file (`real_songs.csv`) contains the following information,
+
+`filename`: Name of the file 
+
+`title`: Title of the song
+
+`artist`: name of the artist
+
+`year`: song release year
+
+`lyrics`: lyrics of the song 
+
+`duration`: total duration of the song (in seconds)
+
+`youtube_id`: Youtube ID of the real song. We do not provide the real songs in mp3 format.
+
+`label`: real/fake. For this file all labels are "real"
+
+`artist_overlap`: 
+
+`target`: 0/1. For real songs the target is 0.
+
+`skip_time`: 
+
+`no_vocal`: True/False. Is the songs fully instrumental with no vocal components.
+
+Apart from these, the second metadata file (`fake_songs.csv`) contains the following additional fields- 
+
+`id`: file ID
+
+`algorithm`: the algorithm used to generate the fake song. chirp variants are from suno.
+
+`style`: characteristics of the song. Might include information about male or female voices, instrumental details, and setting of the song.
+
+`bit_rate`: Bit Rate of the generated song. Initially, it can vary, but before training the bitrate of a song gets downscaled to a unique number.
+
+`source`: Was the song generated from Suno or Udio.
+
+`lyrics_features`: short description about the lyrics
+
+`topic`: The topic of the song. e.g., star trek, pokemon etc.
+
+`genre`: song genre. e.g., salsa, grunge etc.
+
+`mood`: modd of the song. e.g., mournful, tense etc.
+
+
+
+## Data Split 
 
 To split it into train, val, and test set, we will need to run the following command from the parent folder
 
