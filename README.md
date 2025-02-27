@@ -85,13 +85,15 @@ The first metadata file (`real_songs.csv`) contains the following information,
 
 `label`: real/fake. For this file all labels are "real"
 
-`artist_overlap`: 
+`artist_overlap`: does test and train split contains this same artist.
 
 `target`: 0/1. For real songs the target is 0.
 
-`skip_time`: 
+`skip_time`: the amount of time for start (in seconds) that contain only instrumental.
 
 `no_vocal`: True/False. Is the songs fully instrumental with no vocal components.
+
+`split`: train/test split
 
 Apart from these, the second metadata file (`fake_songs.csv`) contains the following additional fields- 
 
@@ -101,7 +103,7 @@ Apart from these, the second metadata file (`fake_songs.csv`) contains the follo
 
 `style`: characteristics of the song. Might include information about male or female voices, instrumental details, and setting of the song.
 
-`bit_rate`: Bit Rate of the generated song. Initially, it can vary, but before training the bitrate of a song gets downscaled to a unique number.
+`bit_rate`: Bit Rate of the generated song. Initially, it can vary. But before training, the bitrate of a song gets downscaled to a unique number.
 
 `source`: Was the song generated from Suno or Udio.
 
@@ -111,7 +113,7 @@ Apart from these, the second metadata file (`fake_songs.csv`) contains the follo
 
 `genre`: song genre. e.g., salsa, grunge etc.
 
-`mood`: modd of the song. e.g., mournful, tense etc.
+`mood`: mood of the song. e.g., mournful, tense etc.
 
 
 
