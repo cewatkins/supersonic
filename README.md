@@ -87,7 +87,7 @@ kaggle datasets download -d awsaf49/sonics-dataset --unzip
 │   └── fake_songs.csv
 ```
 
-> **Note:** This dataset contains **only fake songs**. For real songs, use the `youtube_id` from `real_songs.csv` to manually download them and place them inside `/dataset/fake_songs/` folder.
+> **Note:** This dataset contains **only fake songs**. For real songs, use the `youtube_id` from `real_songs.csv` to manually download them and place them inside `/dataset/real_songs/` folder.
 
 
 ## Data Split 
