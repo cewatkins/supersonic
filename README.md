@@ -25,7 +25,7 @@ for end-to-end Synthetic Song Detection (SSD), comprising over 97k songs (4,751 
 
 ---
 
-## 🎵 Spectro-Temporal Tokenizer
+## 🎵 Spectro-Temporal Tokens Transformer (Spec🔱ra)
 
 ![Model Architecture](sonics-specttra-v2.jpg)
 
@@ -40,14 +40,21 @@ for end-to-end Synthetic Song Detection (SSD), comprising over 97k songs (4,751 
 - **OS:** Ubuntu 20.04
 - **CUDA Version:** 12.4
 
+This is if you want to reproduce the results.
 ---
 
 ## 🚀 Installation
 
+For training:
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+```
+
+For inference:
+```bash
+pip install git+https://github.com/awsaf49/sonics.git
 ```
 
 ---
@@ -182,6 +189,19 @@ pip install git+https://github.com/awsaf49/sonics.git
 # Load model
 from sonics import HFAudioClassifier
 model = HFAudioClassifier.from_pretrained("awsaf49/sonics-spectttra-gamma-5s")
+```
+
+---
+
+## 📝 Citation
+
+```bibtex
+@inproceedings{rahman2024sonics,
+        title={SONICS: Synthetic Or Not - Identifying Counterfeit Songs},
+        author={Rahman, Md Awsafur and Hakim, Zaber Ibn Abdul and Sarker, Najibul Haque and Paul, Bishmoy and Fattah, Shaikh Anowarul},
+        booktitle={International Conference on Learning Representations (ICLR)},
+        year={2025},
+      }
 ```
 
 ---
