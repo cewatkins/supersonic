@@ -144,6 +144,8 @@ python data_split.py
 python train.py --config <path_to_config_file>
 ```
 
+Config files are available inside [`/configs`](/configs) folder.
+
 ## 🔍 Testing
 
 ```bash
