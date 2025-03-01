@@ -3,7 +3,7 @@ import pandas as pd
 
 
 if __name__ == "__main__":
-    DATA_DIR = "../dataset"
+    DATA_DIR = "./dataset"
 
     real_df = pd.read_csv(f"{DATA_DIR}/real_songs.csv")
     real_df["filepath"] = f"{DATA_DIR}/real_songs/" + real_df.filename + ".mp3"
