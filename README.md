@@ -1,6 +1,15 @@
-# SONICS: Synthetic Or Not - Identifying Counterfeit Songs
+
+<div align="center">
+    <img src="https://i.postimg.cc/3Jx3yZ5b/real-vs-fake-sonics-w-logo.jpg" width="250">
+</div>
+
+<div align="center">
+    <h1>SONICS: Synthetic Or Not - Identifying Counterfeit Songs</h1>
+    <h3><span style="color:red;"><b>ICLR 2025 [Poster]</b></span></h3>
+
 
 [![Paper](https://img.shields.io/badge/ICLR-2025-blue)](https://openreview.net/forum?id=PY7KSh29Z8)  [![Paper](https://img.shields.io/badge/ArXiv-Paper-red)](https://arxiv.org/abs/2408.14080)  [![Hugging Face](https://img.shields.io/badge/HuggingFace-Model-yellow)](https://huggingface.co/collections/awsaf49/sonics-spectttra-67bb6517b3920fd18e409013)  [![Hugging Face Dataset](https://img.shields.io/badge/HuggingFace-Dataset-orange)](https://huggingface.co/datasets/awsaf49/sonics)  [![Kaggle Dataset](https://img.shields.io/badge/Kaggle-Dataset-blue?logo=kaggle)](https://www.kaggle.com/datasets/awsaf49/sonics-dataset)  [![Hugging Face Demo](https://img.shields.io/badge/HuggingFace-Demo-blue)](https://huggingface.co/spaces/awsaf49/sonics-fake-song-detection)  [![License](https://img.shields.io/badge/License-MIT%20License-blue)](https://opensource.org/licenses/MIT)
+</div>
 
 This repository contains the official source code for our paper **SONICS: Synthetic Or Not - Identifying Counterfeit Songs**.
 
@@ -28,7 +37,7 @@ for end-to-end Synthetic Song Detection (SSD), comprising over 97k songs (4,751 
 
 ## Installation
 
-```
+```py
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -38,7 +47,7 @@ pip install -r requirements.txt
 
 You can download the dataset either from Huggingface or Kaggle. To download it from Huggingface, run the following code snippet,
 
-```
+```py
 from huggingface_hub import snapshot_download
 
 snapshot_download(repo_id="awsaf49/sonics", repo_type="dataset", local_dir="you_local_folder")
@@ -58,13 +67,13 @@ parentFolder
 ├──sonics
 │
 ├──dataset
-│       ├──real_songs  
-│       │   └──xxx.mp3 
 │       ├──fake_songs
 │       │   └──yyy.mp3
 │       ├──real_songs.csv
 │       └──fake_songs.csv
 ```
+
+This dataset contains only fake songs, for real songs there is `youtube_id` in `real_songs.csv`. You need to manually download them and put it inside `/dataset/real_songs/` folder.
 
 ## Metadata Properties
 The first metadata file (`real_songs.csv`) contains the following information,
@@ -160,8 +169,8 @@ python model_profile.py --config <path to the config file> --batch_size 12
 | `sonics-spectttra-beta-5s`    | <a class="hf-button" href="https://huggingface.co/awsaf49/sonics-spectttra-beta-5s"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg">HF</a>  | SpecTTTra-β   | 5s       | 3      | 5      | 0.78 | 0.69        | 0.94        | 152         | 1.1       | 0.2       | 5          | 17          |
 | `sonics-spectttra-gamma-5s`   | <a class="hf-button" href="https://huggingface.co/awsaf49/sonics-spectttra-gamma-5s"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg">HF</a>  | SpecTTTra-γ   | 5s       | 5      | 7      | 0.76 | 0.66        | 0.92        | 154         | 0.7       | 0.1       | 2          | 17          |
 | `sonics-spectttra-alpha-120s` | <a class="hf-button" href="https://huggingface.co/awsaf49/sonics-spectttra-alpha-120s"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg">HF</a>  | SpecTTTra-α   | 120s     | 1      | 3      | 0.97 | 0.96        | 0.99        | 47          | 23.7      | 3.9       | 50         | 19          |
-| `sonics-spectttra-beta-120s`  | <a class="hf-button" href="https://huggingface.co/awsaf49/sonics-spectttra-beta-120s"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg">HF</a>  | SpecTTTra-β   | 120s     | 3      | 5      | 0.92 | 0.86        | 0.99        | 80          | 14.0      | 2.3       | 29         | 17          |
-| `sonics-spectttra-gamma-120s` | <a class="hf-button" href="https://huggingface.co/awsaf49/sonics-spectttra-gamma-120s"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg">HF</a>  | SpecTTTra-γ   | 120s     | 5      | 7      | 0.97 | 0.96        | 0.99        | 97          | 10.1      | 1.6       | 138        | 22          |
+| `sonics-spectttra-beta-120s`  | <a class="hf-button" href="https://huggingface.co/awsaf49/sonics-spectttra-beta-120s"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg">HF</a>  | SpecTTTra-β   | 120s     | 3      | 5      | 0.92 | 0.86        | 0.99        | 80          | 14.0      | 2.3       | 29         | 21          |
+| `sonics-spectttra-gamma-120s` | <a class="hf-button" href="https://huggingface.co/awsaf49/sonics-spectttra-gamma-120s"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg">HF</a>  | SpecTTTra-γ   | 120s     | 5      | 7      | 0.88 | 0.79        | 0.99        | 97          | 10.1      | 1.6       | 20        | 24          |
 
 ## Acknowledgement
 
