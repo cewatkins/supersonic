@@ -1,4 +1,54 @@
 fake_songs.csv
+
+# === DATASET FILES - Large files that exceed GitHub limits ===
+# Exclude entire dataset directory to prevent accidental commits of large files
+dataset/
+# Alternative: if you want to track some dataset files, use specific exclusions:
+# dataset/*.csv
+# dataset/*.zip
+# dataset/fake_songs/
+# dataset/**/*.zip
+
+# Large model files and checkpoints
+*.ckpt
+*.pth
+*.pt
+*.h5
+*.hdf5
+*.bin
+*.safetensors
+models/
+checkpoints/
+weights/
+
+# Large data files (over 50MB)
+*.zip
+*.tar.gz
+*.tar.bz2
+*.7z
+*.rar
+
+# Audio files
+*.wav
+*.mp3
+*.flac
+*.ogg
+*.m4a
+*.aac
+
+# Video files  
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# Large text files that might be datasets
+*.jsonl
+*.tsv
+*_large.csv
+*_full.csv
+
+# === PYTHON ===
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
