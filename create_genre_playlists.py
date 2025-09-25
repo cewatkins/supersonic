@@ -10,12 +10,21 @@ from collections import defaultdict
 from urllib.parse import quote
 
 def read_real_songs(csv_path):
-    """Read real_songs.csv and return songs by artist"""
-    songs_by_artist = defaultdict(list)
+    """Read real_songs.csv and return songs grouped by multiple categories"""
+    songs_by_category = {
+        'artist': defaultdict(list),
+        'year': defaultdict(list),
+        'decade': defaultdict(list),
+        'label': defaultdict(list)
+    }
     
     with open(csv_path, 'r', encoding='utf-8') as file:
         reader = csv.DictReader(file)
         for row in reader:
+            # Skip entries without youtube_id (unplayable)
+            if not row.get('youtube_id'):
+                continue
+                
             youtube_url = f"https://www.youtube.com/watch?v={row['youtube_id']}"
             
             song_data = {
@@ -24,14 +33,29 @@ def read_real_songs(csv_path):
                 'artist': row['artist'],
                 'year': row.get('year', ''),
                 'duration': row.get('duration', ''),
+                'label': row.get('label', ''),
                 'url': youtube_url,
                 'type': 'real'
             }
             
-            # Group by artist for artist-based playlists
-            songs_by_artist[row['artist']].append(song_data)
+            # Group by artist
+            songs_by_category['artist'][row['artist']].append(song_data)
+            
+            # Group by year
+            year = row.get('year', '').strip()
+            if year and year.isdigit():
+                songs_by_category['year'][year].append(song_data)
+                
+                # Group by decade
+                decade = f"{year[:3]}0s"
+                songs_by_category['decade'][decade].append(song_data)
+            
+            # Group by label
+            label = row.get('label', '').strip()
+            if label and label.lower() not in ['', 'unknown', 'none', 'null']:
+                songs_by_category['label'][label].append(song_data)
     
-    return songs_by_artist
+    return songs_by_category
 
 def read_fake_songs(csv_path):
     """Read fake_songs.csv and return songs grouped by genre, mood, topic, style"""
@@ -175,7 +199,7 @@ def main():
         sys.exit(1)
     
     print("Reading real songs...")
-    real_songs_by_artist = read_real_songs(real_songs_path)
+    real_songs_by_category = read_real_songs(real_songs_path)
     
     print("Reading fake songs...")
     fake_songs_by_category = read_fake_songs(fake_songs_path)
@@ -187,6 +211,9 @@ def main():
     os.makedirs('playlists/by_style', exist_ok=True)
     os.makedirs('playlists/by_algorithm', exist_ok=True)
     os.makedirs('playlists/by_artist', exist_ok=True)
+    os.makedirs('playlists/by_year', exist_ok=True)
+    os.makedirs('playlists/by_decade', exist_ok=True)
+    os.makedirs('playlists/by_label', exist_ok=True)
     
     # Create genre-based playlists (fake songs)
     print(f"\nCreating genre-based playlists...")
@@ -218,9 +245,9 @@ def main():
             
             print(f"  Created playlist for mood '{mood}' ({len(songs)} songs)")
     
-    # Create artist-based playlists (real songs)
+    # Create artist-based playlists (real songs - PLAYABLE with YouTube URLs)
     print(f"\nCreating artist-based playlists...")
-    for artist, songs in real_songs_by_artist.items():
+    for artist, songs in real_songs_by_category['artist'].items():
         if len(songs) >= 3:  # Only create if artist has multiple songs
             safe_artist = safe_filename(artist)
             
@@ -231,6 +258,34 @@ def main():
             create_html_playlist(songs, html_path, f"Artist: {artist} ({len(songs)} songs)")
             
             print(f"  Created playlist for artist '{artist}' ({len(songs)} songs)")
+    
+    # Create year-based playlists (real songs - PLAYABLE with YouTube URLs)
+    print(f"\nCreating year-based playlists...")
+    for year, songs in real_songs_by_category['year'].items():
+        if len(songs) >= 5:  # Only create if year has enough songs
+            safe_year = safe_filename(year)
+            
+            m3u_path = f'playlists/by_year/{safe_year}.m3u'
+            create_m3u_playlist(songs, m3u_path, f"Year: {year}")
+            
+            html_path = f'playlists/by_year/{safe_year}.html'
+            create_html_playlist(songs, html_path, f"Music from {year} ({len(songs)} songs)")
+            
+            print(f"  Created playlist for year '{year}' ({len(songs)} songs)")
+    
+    # Create decade-based playlists (real songs - PLAYABLE with YouTube URLs)
+    print(f"\nCreating decade-based playlists...")
+    for decade, songs in real_songs_by_category['decade'].items():
+        if len(songs) >= 10:  # Only create if decade has enough songs
+            safe_decade = safe_filename(decade)
+            
+            m3u_path = f'playlists/by_decade/{safe_decade}.m3u'
+            create_m3u_playlist(songs, m3u_path, f"Decade: {decade}")
+            
+            html_path = f'playlists/by_decade/{safe_decade}.html'
+            create_html_playlist(songs, html_path, f"Music from the {decade} ({len(songs)} songs)")
+            
+            print(f"  Created playlist for decade '{decade}' ({len(songs)} songs)")
     
     # Create algorithm-based playlists (fake songs)
     print(f"\nCreating algorithm-based playlists...")
@@ -246,12 +301,15 @@ def main():
             
             print(f"  Created playlist for algorithm '{algorithm}' ({len(songs)} songs)")
     
-    print(f"\n✅ Genre-based playlists created!")
+    print(f"\n✅ Category-based playlists created!")
     print(f"📁 Check the following directories:")
     print(f"  • playlists/by_genre/ - Fake songs by genre")
     print(f"  • playlists/by_mood/ - Fake songs by mood") 
-    print(f"  • playlists/by_artist/ - Real songs by artist")
+    print(f"  • playlists/by_artist/ - Real songs by artist (PLAYABLE)")
+    print(f"  • playlists/by_year/ - Real songs by year (PLAYABLE)")
+    print(f"  • playlists/by_decade/ - Real songs by decade (PLAYABLE)")
     print(f"  • playlists/by_algorithm/ - Fake songs by AI algorithm")
+    print(f"\n🎵 All real songs have YouTube URLs and are playable in VLC/browsers!")
 
 if __name__ == "__main__":
     main()
