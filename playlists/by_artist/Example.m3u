@@ -1,0 +1,10 @@
+#EXTM3U
+#PLAYLIST:Artist: Example
+#EXTINF:-1,Example - Kickstarts
+https://www.youtube.com/watch?v=_1vOEz4p6MQ
+#EXTINF:-1,Example - All Night
+https://www.youtube.com/watch?v=Ap7zTrOKUF0
+#EXTINF:-1,Example - Watch the Sun Come Up
+https://www.youtube.com/watch?v=eTLKHRk68l4
+#EXTINF:-1,Example - Last Ones Standing
+https://www.youtube.com/watch?v=MmsSMbZxulU
